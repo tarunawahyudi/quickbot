@@ -12,4 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationProperties {
     private String name;
     private String url;
+    private String domain;
+    private String path;
+    private String locale;
 }

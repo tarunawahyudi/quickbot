@@ -17,21 +17,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.List;
 
 @Slf4j
 @AllArgsConstructor
 @Service
 public class GmailService implements EmailService {
 
-    private final ApplicationProperties applicationProperties;
+    private final ApplicationProperties properties;
     private final ApplicationConfig config;
 
     @Override
     public void registration(User user) {
         Faker faker = config.getFaker();
         WebDriver driver = config.getWebDriver();
-        String url = applicationProperties.getUrl();
+        String url = properties.getUrl();
 
         try {
 
@@ -71,14 +70,7 @@ public class GmailService implements EmailService {
     }
 
     private void selectRadioOption(WebDriver driver) {
-        List<WebElement> radioButtons = driver.findElements(By.cssSelector("div.zJKIV"));
 
-        for (WebElement radioButton : radioButtons) {
-            WebElement textElement = radioButton.findElement(By.cssSelector("div.dJVBl"));
-            String text = textElement.getText();
-            log.info("ini email nya: {}", text);
-            radioButton.click();
-        }
     }
 
     private void setCookie(WebDriver driver) {
@@ -88,9 +80,9 @@ public class GmailService implements EmailService {
         String cookieValue = faker.lorem().sentence();
 
         Cookie cookie = new Cookie.Builder(cookieName, cookieValue)
-                .domain("google.com")
+                .domain(properties.getDomain())
                 .isSecure(true)
-                .path("/singup")
+                .path(properties.getPath())
                 .build();
 
         driver.manage().addCookie(cookie);

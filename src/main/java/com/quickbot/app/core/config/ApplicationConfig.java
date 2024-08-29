@@ -11,6 +11,12 @@ import java.util.Locale;
 @Configuration
 public class ApplicationConfig {
 
+    private final ApplicationProperties properties;
+
+    public ApplicationConfig(ApplicationProperties applicationProperties) {
+        this.properties = applicationProperties;
+    }
+
     @Bean
     public WebDriver getWebDriver() {
         WebDriver driver = new ChromeDriver();
@@ -20,6 +26,6 @@ public class ApplicationConfig {
 
     @Bean
     public Faker getFaker() {
-        return new Faker(Locale.forLanguageTag("id-ID"));
+        return new Faker(Locale.forLanguageTag(properties.getLocale()));
     }
 }
