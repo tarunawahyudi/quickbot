@@ -4,3 +4,7 @@ application:
   domain: google.com
   path: /singup
   locale: id-ID
+  prefix: gmail.com
+spring:
+  messages:
+    basename: messages

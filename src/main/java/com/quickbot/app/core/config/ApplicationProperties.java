@@ -15,4 +15,5 @@ public class ApplicationProperties {
     private String domain;
     private String path;
     private String locale;
+    private String prefix;
 }

@@ -1,4 +1,4 @@
-package com.quickbot.app.component.model;
+package com.quickbot.app.component.model.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

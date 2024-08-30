@@ -1,7 +1,7 @@
 package com.quickbot.app.component.service;
 
-import com.quickbot.app.component.model.User;
-import com.quickbot.app.component.model.UserInformation;
+import com.quickbot.app.component.model.entities.User;
+import com.quickbot.app.component.model.entities.UserInformation;
 import com.quickbot.app.component.model.enums.Gender;
 import com.quickbot.app.core.config.ApplicationConfig;
 import jakarta.annotation.PostConstruct;
@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
+
+import java.util.Locale;
 
 @Slf4j
 @Service
@@ -19,7 +21,7 @@ public class InitializationService {
     private final ApplicationConfig applicationConfig;
 
     @PostConstruct
-    public void init() {
+    public void init() throws Exception {
 
         Faker faker = applicationConfig.getFaker();
 
